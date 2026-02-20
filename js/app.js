@@ -29,12 +29,22 @@ class EmperorsJournal {
         this.progressBar = document.getElementById('progressBar');
         this.contentArea = document.querySelector('.content-area');
         this.app = document.getElementById('app');
+        this.menuButton = document.getElementById('menuButton');
+        this.bookMenu = document.getElementById('bookMenu');
+        this.bookMenuOverlay = document.getElementById('bookMenuOverlay');
+        this.bookMenuContent = document.getElementById('bookMenuContent');
+        this.closeMenuButton = document.getElementById('closeMenuButton');
     }
 
     attachEventListeners() {
         // Tap navigation
         this.navLeft.addEventListener('click', () => this.previousMeditation());
         this.navRight.addEventListener('click', () => this.nextMeditation());
+
+        // Menu toggle
+        this.menuButton.addEventListener('click', () => this.toggleMenu());
+        this.closeMenuButton.addEventListener('click', () => this.closeMenu());
+        this.bookMenuOverlay.addEventListener('click', () => this.closeMenu());
 
         // Swipe gestures
         this.app.addEventListener('touchstart', (e) => {
@@ -50,6 +60,7 @@ class EmperorsJournal {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') this.previousMeditation();
             if (e.key === 'ArrowRight') this.nextMeditation();
+            if (e.key === 'Escape' && this.menuOpen) this.closeMenu();
         });
 
         // Prevent image dragging
@@ -82,8 +93,67 @@ class EmperorsJournal {
     }
 
     renderBookMenu() {
-        // Future enhancement: Add book navigation menu
-        // For now, navigation is linear through tap/swipe
+        const menuHTML = MEDITATIONS_DATA.books.map(book => {
+            const startMed = this.getBookStartMeditation(book.id);
+            const endMed = startMed + book.meditations.length - 1;
+            const isActive = this.isInBook(book.id);
+            return `
+                <div class="book-item ${isActive ? 'active' : ''}" data-book-id="${book.id}">
+                    <div class="book-item-title">Book ${book.id}: ${book.title}</div>
+                    <div class="book-item-subtitle">${book.meditations.length} meditations</div>
+                </div>
+            `;
+        }).join('');
+
+        this.bookMenuContent.innerHTML = menuHTML;
+
+        // Add click handlers
+        document.querySelectorAll('.book-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const bookId = parseInt(e.currentTarget.dataset.bookId);
+                this.jumpToBook(bookId);
+            });
+        });
+    }
+
+    getBookStartMeditation(bookId) {
+        let meditation = 1;
+        for (let i = 0; i < bookId - 1; i++) {
+            meditation += MEDITATIONS_DATA.books[i].meditations.length;
+        }
+        return meditation;
+    }
+
+    isInBook(bookId) {
+        const bookInfo = this.getBookInfo(this.currentMeditation);
+        return bookInfo && bookInfo.bookId === bookId;
+    }
+
+    jumpToBook(bookId) {
+        const startMed = this.getBookStartMeditation(bookId);
+        this.currentMeditation = startMed;
+        this.saveProgress();
+        this.transitionMeditation();
+        this.closeMenu();
+        this.renderBookMenu();
+    }
+
+    toggleMenu() {
+        this.menuOpen = !this.menuOpen;
+        if (this.menuOpen) {
+            this.bookMenu.classList.add('open');
+            this.bookMenuOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        } else {
+            this.closeMenu();
+        }
+    }
+
+    closeMenu() {
+        this.menuOpen = false;
+        this.bookMenu.classList.remove('open');
+        this.bookMenuOverlay.classList.remove('open');
+        document.body.style.overflow = '';
     }
 
     getBookInfo(meditationNum) {
