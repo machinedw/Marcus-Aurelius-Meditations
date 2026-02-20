@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>The Emperor's Journal - Daily Meditations</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Progress Header -->
+        <header class="progress-header">
+            <div class="meditation-info">
+                <h1 id="bookTitle" class="book-title">Book I: Debts and Lessons</h1>
+                <p id="meditationNumber" class="meditation-number">Meditation 1 of 16</p>
+            </div>
+            <div class="progress-bar-container">
+                <div id="progressBar" class="progress-bar" style="width: 6.25%"></div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <!-- Meditation Text -->
+            <div id="meditationText" class="meditation-text">
+                <p>From my grandfather Verus: integrity and calm dignity. Even in power, remember your humanity. Lead without arrogance. In every interaction, be the person you'd want to follow.</p>
+            </div>
+
+            <!-- Meditation Image -->
+            <div class="meditation-image-container">
+                <img id="meditationImage" 
+                     src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&h=600&fit=crop" 
+                     alt="Stoic contemplation"
+                     class="meditation-image">
+            </div>
+        </main>
+
+        <!-- Navigation Zones (Invisible tap areas) -->
+        <div class="nav-zone nav-left" id="navLeft"></div>
+        <div class="nav-zone nav-right" id="navRight"></div>
+
+        <!-- Attribution Footer -->
+        <footer class="attribution">
+            <p>Marcus Aurelius • Meditations</p>
+        </footer>
+    </div>
+
+    <script src="js/meditations.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('Service Worker registration failed'));
+        }
+    </script>
+</body>
+</html>

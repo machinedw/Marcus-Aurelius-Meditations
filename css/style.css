@@ -1,0 +1,328 @@
+/* ============================================
+   THE EMPEROR'S JOURNAL - DAILY MEDITATIONS
+   Optimized for iPhone 13 Pro Max (428x926px)
+   ============================================ */
+
+:root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --text-primary: #e8e8e8;
+    --text-secondary: #b8b8b8;
+    --accent-bronze: #8B7355;
+    --accent-gold: #D4AF37;
+    --border-subtle: #3a3a3a;
+    
+    --font-serif: 'Crimson Text', Georgia, serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   GLOBAL RESET & BASE
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   APP CONTAINER
+   ============================================ */
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ============================================
+   PROGRESS HEADER
+   ============================================ */
+
+.progress-header {
+    padding: env(safe-area-inset-top, 20px) 30px 20px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    z-index: 10;
+}
+
+.meditation-info {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.book-title {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent-bronze);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.meditation-number {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 3px;
+    background: var(--border-subtle);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-bronze), var(--accent-gold));
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+}
+
+/* ============================================
+   MAIN CONTENT AREA
+   ============================================ */
+
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 30px 30px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+
+/* ============================================
+   MEDITATION TEXT
+   ============================================ */
+
+.meditation-text {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 1;
+    transition: var(--transition-smooth);
+}
+
+.meditation-text p {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+/* Ensure maximum 6 lines */
+.meditation-text p {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: visible;
+}
+
+/* ============================================
+   MEDITATION IMAGE
+   ============================================ */
+
+.meditation-image-container {
+    width: 70%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    transition: var(--transition-smooth);
+}
+
+.meditation-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+/* ============================================
+   NAVIGATION ZONES
+   ============================================ */
+
+.nav-zone {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 35%;
+    z-index: 5;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.nav-left {
+    left: 0;
+}
+
+.nav-right {
+    right: 0;
+}
+
+/* Visual feedback on tap */
+.nav-zone:active {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ============================================
+   ATTRIBUTION FOOTER
+   ============================================ */
+
+.attribution {
+    padding: 16px 30px env(safe-area-inset-bottom, 20px);
+    text-align: center;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-subtle);
+    z-index: 10;
+}
+
+.attribution p {
+    font-family: var(--font-serif);
+    font-size: 12px;
+    font-style: italic;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   TRANSITIONS & ANIMATIONS
+   ============================================ */
+
+.fade-out {
+    opacity: 0 !important;
+    transform: scale(0.98);
+}
+
+.fade-in {
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Smaller phones */
+@media (max-width: 375px) {
+    .meditation-text p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    .book-title {
+        font-size: 16px;
+    }
+    
+    .meditation-image-container {
+        width: 75%;
+    }
+    
+    .content-area {
+        padding: 30px 24px 24px;
+    }
+}
+
+/* Tablets and larger */
+@media (min-width: 768px) {
+    .meditation-text p {
+        font-size: 20px;
+        line-height: 1.8;
+    }
+    
+    .book-title {
+        font-size: 20px;
+    }
+    
+    .meditation-image-container {
+        width: 60%;
+        max-width: 500px;
+    }
+}
+
+/* ============================================
+   TOUCH GESTURES
+   ============================================ */
+
+.content-area {
+    touch-action: pan-y;
+}
+
+/* Prevent pull-to-refresh on iOS */
+body {
+    overscroll-behavior-y: none;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --text-primary: #ffffff;
+        --text-secondary: #cccccc;
+        --border-subtle: #555555;
+    }
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
+.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}

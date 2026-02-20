@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+    <!-- Background -->
+    <rect width="200" height="200" fill="#1a1a1a"/>
+    
+    <!-- Laurel wreath (left) -->
+    <path d="M50 100 Q45 90 50 80 Q55 85 50 90 Z" fill="#8B7355" opacity="0.8"/>
+    <path d="M50 110 Q45 100 50 90 Q55 95 50 100 Z" fill="#8B7355" opacity="0.8"/>
+    <path d="M50 120 Q45 110 50 100 Q55 105 50 110 Z" fill="#8B7355" opacity="0.8"/>
+    
+    <!-- Laurel wreath (right) -->
+    <path d="M150 100 Q155 90 150 80 Q145 85 150 90 Z" fill="#8B7355" opacity="0.8"/>
+    <path d="M150 110 Q155 100 150 90 Q145 95 150 100 Z" fill="#8B7355" opacity="0.8"/>
+    <path d="M150 120 Q155 110 150 100 Q145 105 150 110 Z" fill="#8B7355" opacity="0.8"/>
+    
+    <!-- Roman column -->
+    <rect x="95" y="60" width="10" height="80" fill="#D4AF37"/>
+    <rect x="90" y="55" width="20" height="8" fill="#D4AF37"/>
+    <rect x="90" y="138" width="20" height="8" fill="#D4AF37"/>
+    
+    <!-- Stoic text element (simplified Greek letter Phi) -->
+    <circle cx="100" cy="100" r="15" fill="none" stroke="#e8e8e8" stroke-width="3"/>
+    <line x1="100" y1="75" x2="100" y2="125" stroke="#e8e8e8" stroke-width="3"/>
+    
+    <!-- Title -->
+    <text x="100" y="170" text-anchor="middle" font-family="serif" font-size="12" font-weight="600" fill="#8B7355">
+        EMPEROR'S
+    </text>
+    <text x="100" y="185" text-anchor="middle" font-family="serif" font-size="12" font-weight="600" fill="#8B7355">
+        JOURNAL
+    </text>
+</svg>
