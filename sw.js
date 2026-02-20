@@ -4,7 +4,7 @@
 const CACHE_NAME = 'emperors-journal-v1';
 const urlsToCache = [
     './',
-    '/index.html',
+    './index.html',
     '/css/style.css',
     '/js/app.js',
     '/js/meditations.js',
