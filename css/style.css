@@ -288,7 +288,7 @@ html, body {
     width: 100%;
     max-width: 600px;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     opacity: 1;
     transform: scale(1);
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -297,18 +297,16 @@ html, body {
 
 .meditation-text p {
     font-family: var(--font-serif);
-    font-size: 18px;
-    line-height: 1.7;
+    font-size: 24px;
+    line-height: 1.6;
     color: var(--text-primary);
     font-weight: 400;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
 }
 
-/* Ensure maximum 6 lines */
+/* Ensure text is fully visible - no clipping */
 .meditation-text p {
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
+    display: block;
     overflow: visible;
 }
 
@@ -317,12 +315,12 @@ html, body {
    ============================================ */
 
 .meditation-image-container {
-    width: 70%;
-    max-width: 400px;
-    margin: 0 auto;
+    width: 65%;
+    max-width: 380px;
+    margin: 0 auto 30px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     opacity: 1;
     transform: scale(1);
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -416,8 +414,8 @@ html, body {
 /* Smaller phones */
 @media (max-width: 375px) {
     .meditation-text p {
-        font-size: 16px;
-        line-height: 1.6;
+        font-size: 22px;
+        line-height: 1.5;
     }
     
     .book-title {
@@ -425,7 +423,7 @@ html, body {
     }
     
     .meditation-image-container {
-        width: 75%;
+        width: 70%;
     }
     
     .content-area {
@@ -436,8 +434,8 @@ html, body {
 /* Tablets and larger */
 @media (min-width: 768px) {
     .meditation-text p {
-        font-size: 20px;
-        line-height: 1.8;
+        font-size: 26px;
+        line-height: 1.7;
     }
     
     .book-title {
