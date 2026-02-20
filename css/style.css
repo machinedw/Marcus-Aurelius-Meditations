@@ -3,25 +3,6 @@
    Optimized for iPhone 13 Pro Max (428x926px)
    ============================================ */
 
-:root {
-    --bg-primary: #1a1a1a;
-    --bg-secondary: #2a2a2a;
-    --text-primary: #e8e8e8;
-    --text-secondary: #b8b8b8;
-    --accent-bronze: #8B7355;
-    --accent-gold: #D4AF37;
-    --border-subtle: #3a3a3a;
-    
-    --font-serif: 'Crimson Text', Georgia, serif;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* ============================================
-   GLOBAL RESET & BASE
-   ============================================ */
-
 * {
     margin: 0;
     padding: 0;
@@ -29,300 +10,323 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: fixed;
-    background: var(--bg-primary);
+:root {
+    --bg-primary: #FFFFFF;
+    --text-primary: #000000;
+    --text-accent: #4A90E2;
+    --progress-bg: #E0E0E0;
+    --progress-fill: #4A90E2;
+    --border-color: #E0E0E0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-primary);
     color: var(--text-primary);
-    font-family: var(--font-sans);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-/* ============================================
-   APP CONTAINER
-   ============================================ */
-
-.app-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
-
-/* ============================================
-   PROGRESS HEADER
-   ============================================ */
-
-.progress-header {
-    padding: env(safe-area-inset-top, 20px) 30px 20px;
-    background: var(--bg-primary);
-    border-bottom: 1px solid var(--border-subtle);
-    z-index: 10;
-}
-
-.meditation-info {
-    text-align: center;
-    margin-bottom: 16px;
-}
-
-.book-title {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--accent-bronze);
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-}
-
-.meditation-number {
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--text-secondary);
-    letter-spacing: 0.3px;
-}
-
-.progress-bar-container {
-    width: 100%;
-    height: 3px;
-    background: var(--border-subtle);
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent-bronze), var(--accent-gold));
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 2px;
-}
-
-/* ============================================
-   MAIN CONTENT AREA
-   ============================================ */
-
-.content-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 40px 30px 30px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    position: relative;
-}
-
-/* ============================================
-   MEDITATION TEXT
-   ============================================ */
-
-.meditation-text {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    margin-bottom: 30px;
-    opacity: 1;
-    transition: var(--transition-smooth);
-}
-
-.meditation-text p {
-    font-family: var(--font-serif);
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--text-primary);
-    font-weight: 400;
-    letter-spacing: 0.2px;
-}
-
-/* Ensure maximum 6 lines */
-.meditation-text p {
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: visible;
-}
-
-/* ============================================
-   MEDITATION IMAGE
-   ============================================ */
-
-.meditation-image-container {
-    width: 70%;
-    max-width: 400px;
-    margin: 0 auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    opacity: 1;
-    transition: var(--transition-smooth);
-}
-
-.meditation-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    opacity: 0.85;
-}
-
-/* ============================================
-   NAVIGATION ZONES
-   ============================================ */
-
-.nav-zone {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 35%;
-    z-index: 5;
-    cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
 }
 
-.nav-left {
+/* Header with Menu Button */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background-color: var(--bg-primary);
+    padding: env(safe-area-inset-top, 15px) 20px 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+#header-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+    text-align: center;
+}
+
+/* Chapter Menu Overlay */
+#chapter-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 350px;
+    height: 100vh;
+    background-color: var(--bg-primary);
+    z-index: 300;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+    padding: env(safe-area-inset-top, 60px) 0 env(safe-area-inset-bottom, 20px) 0;
+    border-right: 1px solid var(--border-color);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+#chapter-menu.open {
     left: 0;
 }
 
-.nav-right {
+#chapter-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 250;
+    display: none;
+}
+
+#chapter-menu-overlay.open {
+    display: block;
+}
+
+.chapter-item {
+    padding: 20px 25px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.chapter-item:active {
+    background-color: #F5F5F5;
+}
+
+.chapter-item-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.chapter-item-subtitle {
+    font-size: 13px;
+    color: #666;
+}
+
+.chapter-item.active {
+    background-color: #F0F8FF;
+}
+
+/* Progress Bar Container */
+#progress-container {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 15px) + 60px);
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--bg-primary);
+    padding: 10px 20px 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#chapter-info {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-accent);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+#progress-bar-wrapper {
+    width: 100%;
+    height: 4px;
+    background-color: var(--progress-bg);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    background-color: var(--progress-fill);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Main App Container */
+#app-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    padding-top: calc(env(safe-area-inset-top, 15px) + 135px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navigation Zones */
+.nav-zone {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    z-index: 50;
+    cursor: pointer;
+}
+
+#nav-left {
+    left: 0;
+}
+
+#nav-right {
     right: 0;
 }
 
-/* Visual feedback on tap */
-.nav-zone:active {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-/* ============================================
-   ATTRIBUTION FOOTER
-   ============================================ */
-
-.attribution {
-    padding: 16px 30px env(safe-area-inset-bottom, 20px);
+/* Lesson Container */
+#lesson-container {
+    max-width: 900px;
+    width: 100%;
+    padding: 0 30px calc(env(safe-area-inset-bottom, 20px) + 20px) 30px;
     text-align: center;
-    background: var(--bg-primary);
-    border-top: 1px solid var(--border-subtle);
+    position: relative;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - env(safe-area-inset-top, 15px) - 155px);
 }
 
-.attribution p {
-    font-family: var(--font-serif);
-    font-size: 12px;
-    font-style: italic;
-    color: var(--text-secondary);
-    letter-spacing: 0.5px;
+#lesson-text {
+    font-size: 22px;
+    line-height: 1.8;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
 }
 
-/* ============================================
-   TRANSITIONS & ANIMATIONS
-   ============================================ */
-
-.fade-out {
-    opacity: 0 !important;
-    transform: scale(0.98);
-}
-
-.fade-in {
-    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+#lesson-image-container {
+    width: 70%;
+    max-width: 400px;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInScale 0.6s ease 0.2s forwards;
+}
+
+@keyframes fadeInScale {
     to {
         opacity: 1;
         transform: scale(1);
     }
 }
 
-/* ============================================
-   RESPONSIVE ADJUSTMENTS
-   ============================================ */
+#lesson-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
 
-/* Smaller phones */
-@media (max-width: 375px) {
-    .meditation-text p {
-        font-size: 16px;
-        line-height: 1.6;
+/* Transition Effects */
+.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
     }
-    
-    .book-title {
-        font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 428px) {
+    #lesson-text {
+        font-size: 22px;
+        line-height: 1.8;
+        padding: 0 10px;
+        margin-bottom: 30px;
     }
-    
-    .meditation-image-container {
+
+    #lesson-image-container {
         width: 75%;
     }
-    
-    .content-area {
-        padding: 30px 24px 24px;
+
+    #lesson-container {
+        padding: 0 25px calc(env(safe-area-inset-bottom, 20px) + 20px) 25px;
     }
 }
 
-/* Tablets and larger */
-@media (min-width: 768px) {
-    .meditation-text p {
-        font-size: 20px;
+@media (max-width: 375px) {
+    #lesson-text {
+        font-size: 22px;
         line-height: 1.8;
     }
-    
-    .book-title {
-        font-size: 20px;
+
+    #lesson-image-container {
+        width: 80%;
     }
-    
-    .meditation-image-container {
-        width: 60%;
-        max-width: 500px;
-    }
-}
 
-/* ============================================
-   TOUCH GESTURES
-   ============================================ */
-
-.content-area {
-    touch-action: pan-y;
-}
-
-/* Prevent pull-to-refresh on iOS */
-body {
-    overscroll-behavior-y: none;
-}
-
-/* ============================================
-   ACCESSIBILITY
-   ============================================ */
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    #lesson-container {
+        padding: 0 20px calc(env(safe-area-inset-bottom, 20px) + 20px) 20px;
     }
 }
 
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-    :root {
-        --text-primary: #ffffff;
-        --text-secondary: #cccccc;
-        --border-subtle: #555555;
+/* Landscape Mode */
+@media (orientation: landscape) and (max-height: 500px) {
+    #lesson-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 40px;
+    }
+
+    #lesson-text {
+        flex: 1;
+        margin-bottom: 0;
+        margin-right: 30px;
+        text-align: left;
+    }
+
+    #lesson-image-container {
+        width: 40%;
+        max-width: 300px;
     }
 }
 
-/* ============================================
-   LOADING STATE
-   ============================================ */
-
+/* Loading State */
 .loading {
     pointer-events: none;
     opacity: 0.6;
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    body {
+        height: -webkit-fill-available;
+    }
 }
