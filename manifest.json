@@ -2,7 +2,7 @@
     "name": "The Emperor's Journal",
     "short_name": "Emperor's Journal",
     "description": "Daily Stoic meditations based on Marcus Aurelius's Meditations - 486 days of ancient wisdom for modern life",
-    "start_url": "/",
+    "start_url": "./",
     "display": "standalone",
     "background_color": "#1a1a1a",
     "theme_color": "#1a1a1a",
